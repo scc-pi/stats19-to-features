@@ -4,8 +4,8 @@ library(tidyverse)
 library(here)
 library(sf)
 
-latest_year <- 2024
-number_of_years <- 4
+latest_year <- 2025
+number_of_years <- 5
 years <- seq(latest_year - number_of_years + 1, latest_year)
 
 # DfT road traffic casualty database (STATS19) is provided in 3 main tables:
@@ -22,11 +22,6 @@ sf_collision_raw <- get_stats19(
   ask = FALSE,
   output_format = "sf"
 )
-
-# stopifnot(
-#   "Collision data missing for some requested years" =
-#     setequal(unique(collision_raw$collision_year), years)
-# )
 
 # Filter on Sheffield - local authority fields are not consistently populated
 # across years (e.g. local_authority_district is NA for 2024)
