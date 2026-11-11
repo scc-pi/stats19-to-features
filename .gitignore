@@ -28,7 +28,10 @@ vignettes/*.pdf
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
 
+# RStudio project file
 *.Rproj
+
+# Downloaded and processed data
 /data
 
 # knitr and R markdown default cache directories
@@ -48,6 +51,9 @@ docs/
 
 # translation temp files
 po/*~
+
+# Locally previewed README file
+README.html
 
 # RStudio Connect folder
 rsconnect/
