@@ -37,7 +37,7 @@ sf_collision_sheffield <- sf_collision_raw |>
     )
   )
 
-output_dir <- here("data", "processed")
+output_dir <- here()
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 output_file <- file.path(
   output_dir, 
