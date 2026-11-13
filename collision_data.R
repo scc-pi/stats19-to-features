@@ -1,6 +1,7 @@
 # install.packages("stats19")
 library(stats19)
 library(tidyverse)
+library(lubridate)
 library(here)
 library(sf)
 
@@ -37,6 +38,11 @@ sf_collision_sheffield <- sf_collision_raw |>
     )
   )
 
+# Add a new column with the day of the week as a number e.g. Monday = 1
+sf_collision_sheffield <- sf_collision_sheffield |> 
+  mutate(day_of_week_num = wday(date, week_start = 1), .after = day_of_week)
+
+# Specify name and location of the GeoPackage file
 output_dir <- here()
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 output_file <- file.path(
@@ -44,6 +50,7 @@ output_file <- file.path(
   str_c("stats19_last", number_of_years,"yrs_sheffield.gpkg")
 )
 
+# Write one layer to our GeoPackage file
 st_write(
   sf_collision_sheffield, 
   output_file, 
